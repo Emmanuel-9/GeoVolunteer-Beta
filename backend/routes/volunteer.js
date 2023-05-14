@@ -1,55 +1,55 @@
 const express = require('express');
 
-const Dustbin = require("../models/dustbin");
+const volunteer = require("../models/volunteer");
 
 const router = express.Router();
 
-// Get all dustbins by its region
+// Get all volunteer by its region
 router.get('/:region', (req, res) => {
-    Dustbin.find({ region: req.params.region })
+    Volunteer.find({ region: req.params.region })
         .then((data) => {
             res.status(200).json({
-                message: "All Dustbins Data is fetched Successfully",
-                dustbins: data
+                message: "All volunteer Data is fetched Successfully",
+                volunteer: data
             });
         })
         .catch(() => {
             res.status(401).json({
-                message: "Dustbins Data cannot be fetched!"
+                message: "volunteer Data cannot be fetched!"
             });
         });
 });
 
-// Add Dustbin by Regional Admin
+// Add volunteer by Regional Admin
 router.post('/add/:region', (req, res) => {
-    Dustbin.findOne({ id: req.body.dustbinId })
-        .then((dustbin) => {
-            if (dustbin) {
+    volunteer.findOne({ id: req.body.volunteerId })
+        .then((volunteer) => {
+            if (volunteer) {
                 return res.json({
-                    message: "Dustbin Already Exist"
+                    message: "volunteer Already Exist"
                 });
             }
         })
-    const dBin = new Dustbin({
-        id: req.body.dustbinId,
+    const dBin = new volunteer({
+        id: req.body.volunteerId,
         location: req.body.location,
         stopover: true,
         region: req.params.region,
         status: -1,
-        address: req.body.dustbinAddress,
+        address: req.body.volunteerAddress,
         owner: "none"
     });
     dBin.save()
         .then((dBin) => {
             res.status(200).json({
-                message: "Dustbin Added!",
-                dustbin: dBin
+                message: "volunteer Added!",
+                volunteer: dBin
             });
-            console.log('dustbin Added!');
+            console.log('volunteer Added!');
         })
         .catch(err => {
             res.json({
-                message: "Cannot add dustbin due to the following error: " + err
+                message: "Cannot add volunteer due to the following error: " + err
             });
         })
 });

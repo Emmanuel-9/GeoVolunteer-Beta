@@ -99,10 +99,6 @@ router.post('/addadmin', (req, res) => {
         .then((hashedPassword) => {
             const admin = new Admin ({
                 name: req.body.regionAdminName,
-                cnic: req.body.regionAdminCnic,
-                cellNo: req.body.regionAdminPhone,
-                region: req.body.regionName,
-                regionCode: req.body.regionCode,
                 emailId: req.body.regionAdminEmail,
                 password: hashedPassword,
                 isSuperAdmin: false,
