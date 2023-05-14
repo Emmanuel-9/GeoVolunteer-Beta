@@ -55,7 +55,7 @@ router.post('/add/:region', (req, res) => {
 });
 
 // driver login and sending driver data from frontend
-router.post('/driverLogin', (req, res) => {
+router.post('/volunteerLogin', (req, res) => {
     Driver.findOne( {emailId: req.body.email} )
         .then((user) => {
             if (user) {
@@ -63,7 +63,7 @@ router.post('/driverLogin', (req, res) => {
                 return bcrypt.compare(req.body.password, user.password);
             } else {
                 return res.status(401).json({
-                    message: "Driver Not Found, Please enter valid credentials!"
+                    message: "Volunteer Not Found, Please enter valid credentials!"
                 });
             }
         })
@@ -72,11 +72,11 @@ router.post('/driverLogin', (req, res) => {
                 const token = jwt.sign({ email: fetchedUser.email, id: fetchedUser._id }, 'Secret_Token', { expiresIn: '1h' });
                 return res.status(200).json({
                     message: "Token Generated",
-                    user: "driver",
+                    user: "volunteer",
                     token: token,
                     expiresIn: 3600,
                     email: fetchedUser.emailId,
-                    driverRegionCode: fetchedUser.regionCode
+                    volunteerRegionCode: fetchedUser.regionCode
                 });
             } else {
                 return res.status(402).json({
@@ -92,12 +92,12 @@ router.post('/driverLogin', (req, res) => {
 });
 
 // get driver details by email
-router.get('/get-driver-details-by-email/:email', (req, res) => {
+router.get('/get-volunteer-details-by-email/:email', (req, res) => {
     Driver.findOne({ emailId: req.params.email })
-        .then((driver) => {
-            if (driver) {
+        .then((volunteer) => {
+            if (volunteer) {
                 res.status(200).json({
-                    driverDetails: driver
+                    volunteerDetails: driver
                 });
             }
             else {
