@@ -2,14 +2,12 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 require('dotenv').config();
-const Dustbin = require("./models/dustbin");
+const Dustbin = require("./models/volunteer");
 
 const app = express();
 
 const adminRoutes = require('./routes/admin');
-const dustbinRoutes = require('./routes/dustbin');
-const customerRoutes = require('./routes/customer');
-const driverRoutes = require('./routes/driver');
+const volunteerRoutes = require('./routes/volunteer');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -40,15 +38,13 @@ app.use((req, res, next) => {
 
 // Routes for actors
 app.use('/api/admin', adminRoutes);
-app.use('/api/dustbin', dustbinRoutes);
-app.use('/api/customer', customerRoutes);
-app.use('/api/driver', driverRoutes);
+app.use('/api/volunteer', volunteerRoutes);
 
 
 // test for communication from hardware
 app.post('/test/test', (req, res) => {
     console.log('Status = ' + req.body.level);
-    console.log('Dustbin ID = ' + req.body.id);
+    console.log('Volunteer ID = ' + req.body.id);
     res.status(200).json({
         'message': 'Request Reached!'
     });
