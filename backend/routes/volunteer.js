@@ -54,6 +54,65 @@ router.post('/add/:region', (req, res) => {
         })
 });
 
+// driver login and sending driver data from frontend
+router.post('/driverLogin', (req, res) => {
+    Driver.findOne( {emailId: req.body.email} )
+        .then((user) => {
+            if (user) {
+                fetchedUser = user;
+                return bcrypt.compare(req.body.password, user.password);
+            } else {
+                return res.status(401).json({
+                    message: "Driver Not Found, Please enter valid credentials!"
+                });
+            }
+        })
+        .then(isUser => {
+            if (isUser) {
+                const token = jwt.sign({ email: fetchedUser.email, id: fetchedUser._id }, 'Secret_Token', { expiresIn: '1h' });
+                return res.status(200).json({
+                    message: "Token Generated",
+                    user: "driver",
+                    token: token,
+                    expiresIn: 3600,
+                    email: fetchedUser.emailId,
+                    driverRegionCode: fetchedUser.regionCode
+                });
+            } else {
+                return res.status(402).json({
+                    message: "Please Enter valid Password!"
+                });
+            }
+        })
+        .catch(error => {
+            res.status(404).json({
+                message: "Cannot login Due to the following error: " + error
+            });
+        });
+});
+
+// get driver details by email
+router.get('/get-driver-details-by-email/:email', (req, res) => {
+    Driver.findOne({ emailId: req.params.email })
+        .then((driver) => {
+            if (driver) {
+                res.status(200).json({
+                    driverDetails: driver
+                });
+            }
+            else {
+                res.status(404).json({
+                    message: "cannot find driver!"
+                });
+            }
+        })
+        .catch((err) => {
+            res.status(403).json({
+                message: "cannot fetch data due to the following error: " + err
+            });
+        });
+});
+
 
 
 
