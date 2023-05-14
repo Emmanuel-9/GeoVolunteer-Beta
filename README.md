@@ -19,11 +19,10 @@ This is a system that tracks the location of volunteers in realtime, by pressing
 * Clone project and run the project in the CMD:
 * python manage.py runserver 
 ## Technologies Used
-* Python(Django)
-* HTML
-* CSS
-* BOOTSTRAP
-* MySQL
+* Node JS
+* React Js
+* BOOTSTRAP          
+* MongoDB
 * AWS
 * Javascript
 * Geolocation
@@ -43,9 +42,9 @@ This is a system that tracks the location of volunteers in realtime, by pressing
 [Twitter](https://twitter.com/njogubless1)
 ### Bug / Feature Request
 
-If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/Emmanuel-9/GeoVolunteer/issues) by including your search query and the expected result.
+If you find a bug (the website couldn't handle the query and / or gave undesired results), kindly open an issue [here](https://github.com/Emmanuel-9/GeoVolunteer-Beta/issues) by including your search query and the expected result.
 
-If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/Emmanuel-9/GeoVolunteer/issues). Please include sample queries and their corresponding results.
+If you'd like to request a new function, feel free to do so by opening an issue [here](https://github.com/Emmanuel-9/GeoVolunteer-Beta/issues). Please include sample queries and their corresponding results.
 
 ## Support and contact details
 For enquiries and contribution to our project, kindly reach out through E-mail: "bratipahmh@gmail.com" / "oregadaniel181@gmail.com"
