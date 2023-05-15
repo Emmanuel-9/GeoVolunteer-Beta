@@ -4,7 +4,7 @@ This is a system that tracks the location of volunteers in realtime, by pressing
 ## Setup/Installation Requirements
 * Open your terminal in pc and create a folder.
 * Clone this repository into the folder using the command line below,
-* $git clone "https://github.com/Emmanuel-9/GeoVolunteer"
+* $git clone "https://github.com/Emmanuel-9/GeoVolunteer-Beta.git"
 * open it on an editor (Atom,vscode,vim,sublime Text, etc.)
 * contribute and push your changes to your repository.
 * To run Django prefer to use the Virtual Environment:
