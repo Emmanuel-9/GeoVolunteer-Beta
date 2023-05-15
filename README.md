@@ -8,16 +8,16 @@ This is a system that tracks the location of volunteers in realtime, by pressing
 * open it on an editor (Atom,vscode,vim,sublime Text, etc.)
 * contribute and push your changes to your repository.
 * To run Django prefer to use the Virtual Environment:
-* pip install virtualenv
+* `pip install virtualenv`
 * Making and Activating the Virtual Environment:
 * virtualenv “name as you like”
-* source env/bin/activate
+* `source env/bin/activate`
 * Installing Django:
-* pip install django
+* `pip install django`
 * Install the project dependencies:
-* pip install -r requirement.txt
+* `pip install -r requirement.txt`
 * Clone project and run the project in the CMD:
-* python manage.py runserver 
+* `python manage.py runserver` 
 ## Technologies Used
 * Node JS
 * React Js
